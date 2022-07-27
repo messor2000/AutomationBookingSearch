@@ -32,30 +32,20 @@ public class TakeResultsFromPageTests {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         webDriverUtils = new WebDriverUtils(driver, webDriverWait);
         bookingPage = new BookingPage(driver, webDriverWait, webDriverUtils);
-        foundResultPage = new FoundResultPage(driver);
-        WebDriver driver = new ChromeDriver();
+        foundResultPage = new FoundResultPage(driver, webDriverWait, webDriverUtils);
         driver.manage().window().maximize();
         driver.get(ConfProperties.getProperty("page"));
     }
 
     @Test
-    @DisplayName(value = "Should return results which which matches the entered data")
+    @DisplayName("should return results which which matches the entered data")
     public void getCorrectDataAfterSearch() {
-//        bookingPage.inputCity("New York");
-//        bookingPage.inputCheckInDate(ConfProperties.getProperty("checkInDate"));
-//        bookingPage.inputCheckOutDate(ConfProperties.getProperty("checkOutDate"));
-//
-//        bookingPage.clickSearchBtn();
-
         bookingPage.expectElements();
         bookingPage.enterSearch(ConfProperties.getProperty("city"));
+        bookingPage.setDate();
         bookingPage.clickSearchBtn();
     }
 
-    @Test
-    public void loginTest() {
-        bookingPage.clickLoginBtn();
-    }
 
     @AfterClass
     public static void tearDown() {

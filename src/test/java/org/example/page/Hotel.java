@@ -1,44 +1,38 @@
 package org.example.page;
-
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.example.util.WebDriverUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class Hotel {
     WebDriver webDriver;
+    WebDriverWait webDriverWait;
+    WebDriverUtils webDriverUtils;
 
-    Hotel(WebDriver webDriver) {
+    Hotel(WebDriver webDriver, WebDriverWait webDriverWait, WebDriverUtils webDriverUtils) {
         PageFactory.initElements(webDriver, this);
+        this.webDriver = webDriver;
+        this.webDriverWait = webDriverWait;
+        this.webDriverUtils = webDriverUtils;
     }
 
-    @FindBy(xpath = "//*[contains(@id, 'showMap2')]")
-    WebElement location;
+    static By ADDRESS = cssSelector("#breadcrumb > ol > li:nth-child(9) > div > div > h1 > a");
 
-    //    @FindBy(xpath = "//*[contains(@id, 'hp_availability_style_changes')]")
-    @FindBy(xpath = "//*[@id=\"hp_availability_style_changes\"]/div[2]/form/div/div[1]/div[1]/div[2]/div/div/div/div/span")
-    WebElement checkInDate;
+    public String getFullAddress() {
+        webDriverWait.until(visibilityOfElementLocated(ADDRESS));
+        WebElement address = webDriver.findElement(ADDRESS);
 
-    //    @FindBy(xpath = "//*[contains(@id, 'hp_availability_style_changes')]")
-    @FindBy(xpath = "//*[@id=\"hp_availability_style_changes\"]/div[2]/form/div/div[1]/div[1]/div[3]/div/div/div/div/span")
-    WebElement checkOutDate;
-
-    public String getLocation() {
-        return location.getText();
-    }
-
-    public String getCheckInDate() {
-        return checkInDate.getText();
-    }
-
-    public String getCheckOutDate() {
-        return checkOutDate.getText();
+        return address.getText();
     }
 }
 
-//*[@id="showMap2"]/span[1]
-//*[@id="hp_availability_style_changes"]/div[2]/form/div/div[1]/div[1]/div[2]/div/div/div/div/span
-//*[@id="hp_availability_style_changes"]/div[2]/form/div/div[1]/div[1]/div[3]/div/div/div/div/span
