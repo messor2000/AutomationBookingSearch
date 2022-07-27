@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="commit for push">
+    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="commit for push for checking date input">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/FoundResultPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/FoundResultPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/Hotel.java" afterDir="false" />
     </list>
@@ -140,7 +139,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658828427249</updated>
-      <workItem from="1658828429495" duration="42109000" />
+      <workItem from="1658828429495" duration="52501000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1658829592921</created>
@@ -156,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658845858116</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="commit for push for checking date input">
+      <created>1658925508794</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658925508794</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +186,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <MESSAGE value="commit for push" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit for push" />
+    <MESSAGE value="commit for push for checking date input" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit for push for checking date input" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/page/FoundResultPage.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

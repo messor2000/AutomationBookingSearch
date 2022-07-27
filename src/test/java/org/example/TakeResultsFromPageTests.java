@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.example.page.BookingPage;
 import org.example.page.FoundResultPage;
+import org.example.page.Hotel;
 import org.example.util.ConfProperties;
 import org.example.util.WebDriverUtils;
 import org.junit.AfterClass;
@@ -15,6 +16,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 public class TakeResultsFromPageTests {
@@ -42,10 +46,20 @@ public class TakeResultsFromPageTests {
     public void getCorrectDataAfterSearch() {
         bookingPage.expectElements();
         bookingPage.enterSearch(ConfProperties.getProperty("city"));
-        bookingPage.setDate();
+//        bookingPage.setDate();
         bookingPage.clickSearchBtn();
+
+        foundResultPage.expectElements();
+        List<Hotel> hotelList = foundResultPage.checkHotelRequirements();
+        System.out.println(hotelList.toString());
+        for (Hotel hotel: hotelList) {
+            assertTrue(checkAddress(hotel.getAddress()));
+        }
     }
 
+    private boolean checkAddress(String address) {
+        return address.contains("New York");
+    }
 
     @AfterClass
     public static void tearDown() {
