@@ -14,16 +14,16 @@ import java.util.List;
 
 import static org.openqa.selenium.By.className;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class FoundResultPage {
-    final WebDriver webDriver;
-    final WebDriverWait webDriverWait;
-    final WebDriverUtils webDriverUtils;
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+public class HotelsResultPage {
+    WebDriver webDriver;
+    WebDriverWait webDriverWait;
+    WebDriverUtils webDriverUtils;
 
     static By HOTEL_NAME = className("fcab3ed991");
     static By ADDRESS =  className("a1fbd102d9");
 
-    public FoundResultPage(WebDriver webDriver, WebDriverWait webDriverWait, WebDriverUtils webDriverUtils) {
+    public HotelsResultPage(WebDriver webDriver, WebDriverWait webDriverWait, WebDriverUtils webDriverUtils) {
         PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;
         this.webDriverWait = webDriverWait;

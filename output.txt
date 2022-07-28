@@ -1,0 +1,1 @@
+public void org.example.TakeResultsFromPageTests.getCorrectDataAfterSearch(), public void org.example.TakeResultsFromPageTests.getCorrectDataAfterSearchInAttraction()

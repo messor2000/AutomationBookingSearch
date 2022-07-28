@@ -2,9 +2,7 @@ package org.example;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.example.page.BookingPage;
-import org.example.page.FoundResultPage;
-import org.example.page.Hotel;
+import org.example.page.*;
 import org.example.util.ConfProperties;
 import org.example.util.WebDriverUtils;
 import org.junit.AfterClass;
@@ -23,7 +21,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Slf4j
 public class TakeResultsFromPageTests {
     private static BookingPage bookingPage;
-    private static FoundResultPage foundResultPage;
+    private static HotelsResultPage hotelsResultPage;
+    private static AttractionsPage attractionsPage;
+    private static AttractionsResults attractionsResult;
     private static WebDriver driver;
     private static WebDriverWait webDriverWait;
     private static WebDriverUtils webDriverUtils;
@@ -36,29 +36,41 @@ public class TakeResultsFromPageTests {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         webDriverUtils = new WebDriverUtils(driver, webDriverWait);
         bookingPage = new BookingPage(driver, webDriverWait, webDriverUtils);
-        foundResultPage = new FoundResultPage(driver, webDriverWait, webDriverUtils);
+        hotelsResultPage = new HotelsResultPage(driver, webDriverWait, webDriverUtils);
+        attractionsPage = new AttractionsPage(driver, webDriverWait, webDriverUtils);
+        attractionsResult = new AttractionsResults(driver);
         driver.manage().window().maximize();
         driver.get(ConfProperties.getProperty("page"));
     }
 
     @Test
-    @DisplayName("should return results which which matches the entered data")
+    @DisplayName("should return results which matches the entered data and city")
     public void getCorrectDataAfterSearch() {
         bookingPage.expectElements();
         bookingPage.enterSearch(ConfProperties.getProperty("city"));
-//        bookingPage.setDate();
+        bookingPage.setDate();
         bookingPage.clickSearchBtn();
 
-        foundResultPage.expectElements();
-        List<Hotel> hotelList = foundResultPage.checkHotelRequirements();
+        List<Hotel> hotelList = hotelsResultPage.checkHotelRequirements();
         System.out.println(hotelList.toString());
         for (Hotel hotel: hotelList) {
-            assertTrue(checkAddress(hotel.getAddress()));
+            assertTrue(hotel.getAddress().contains(ConfProperties.getProperty("city")));
         }
     }
 
-    private boolean checkAddress(String address) {
-        return address.contains("New York");
+    @Test
+    @SneakyThrows
+    @DisplayName("should return correct attractions which have selected requirements")
+    public void getCorrectDataAfterSearchInAttraction() {
+        bookingPage.clickAttractionButton();
+
+        attractionsPage.expectElements();
+        attractionsPage.enterSearch(ConfProperties.getProperty("city"));
+        attractionsPage.clickSearchButton();
+
+        for (String city: attractionsResult.getAttractionsCity()) {
+            assertTrue(city.contains(ConfProperties.getProperty("city")));
+        }
     }
 
     @AfterClass

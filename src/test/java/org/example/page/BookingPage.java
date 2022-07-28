@@ -5,35 +5,25 @@ import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
 import org.example.util.WebDriverUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.google.inject.Inject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import static org.openqa.selenium.By.cssSelector;
-import static org.openqa.selenium.By.xpath;
+import static org.openqa.selenium.By.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class BookingPage {
-    final WebDriver webDriver;
-    final WebDriverWait webDriverWait;
-    final WebDriverUtils webDriverUtils;
+    WebDriver webDriver;
+    WebDriverWait webDriverWait;
+    WebDriverUtils webDriverUtils;
 
     static By SEARCH_BOX = cssSelector("#ss");
-    static By CALENDAR_BODY = By.cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div");
+    static By CALENDAR_BODY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div");
     static By CHECKIN_CALENDAR_BODY = By.xpath("//div[contains(@class, 'b-datepicker')][@data-mode='checkin']");
     //    static By CHECKOUT_CALENDAR_BODY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(3) > div > div > div > div > span");
     static By MONTH = By.cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(1)");
@@ -43,10 +33,10 @@ public class BookingPage {
     static By CHECKOUT_DATE = cssSelector(
             "#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(2) > table > tbody > tr:nth-child(5) > td:nth-child(3)");
 
+    static By ATTRACTIONS_BUTTON = xpath("//*[@id=\"b2indexPage\"]/header/nav[2]/ul/li[4]/a");
     static By SEARCH_BUTTON = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__button > div.sb-searchbox-submit-col.-submit-button > button");
 
     public BookingPage(WebDriver webDriver, WebDriverWait webDriverWait, WebDriverUtils webDriverUtils) {
-        PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;
         this.webDriverWait = webDriverWait;
         this.webDriverUtils = webDriverUtils;
@@ -54,10 +44,6 @@ public class BookingPage {
 
     public void expectElements() {
         webDriverWait.until(visibilityOfElementLocated(SEARCH_BOX));
-    }
-
-    public void clickLoginBtn() {
-        webDriverUtils.waitAndClick(LOGIN_BTN);
     }
 
     public void enterSearch(String searchTerm) {
@@ -94,5 +80,9 @@ public class BookingPage {
 
     public void clickSearchBtn() {
         webDriverUtils.waitAndClick(SEARCH_BUTTON);
+    }
+
+    public void clickAttractionButton() {
+        webDriverUtils.waitAndClick(ATTRACTIONS_BUTTON);
     }
 }
