@@ -52,7 +52,6 @@ public class TakeResultsFromPageTests {
         bookingPage.clickSearchBtn();
 
         List<Hotel> hotelList = hotelsResultPage.checkHotelRequirements();
-        System.out.println(hotelList.toString());
         for (Hotel hotel: hotelList) {
             assertTrue(hotel.getAddress().contains(ConfProperties.getProperty("city")));
         }

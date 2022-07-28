@@ -7,7 +7,6 @@ import org.example.util.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,13 +24,15 @@ public class BookingPage {
     static By SEARCH_BOX = cssSelector("#ss");
     static By CALENDAR_BODY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div");
     static By CHECKIN_CALENDAR_BODY = By.xpath("//div[contains(@class, 'b-datepicker')][@data-mode='checkin']");
-    //    static By CHECKOUT_CALENDAR_BODY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(3) > div > div > div > div > span");
-    static By MONTH = By.cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(1)");
-    static By LOGIN_BTN = xpath("//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[6]/a");
-    static By CHECKIN_DATE = cssSelector(
-            "#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(1)");
-    static By CHECKOUT_DATE = cssSelector(
-            "#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(2) > table > tbody > tr:nth-child(5) > td:nth-child(3)");
+    static By CHECK_IN_MONTH_YEAR = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(2) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-month-year.js-date-field__part > select > option:nth-child(7)");
+//    static By CHECK_IN_DAY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(2) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-day.js-date-field__part.sb-date-field__select_disabled > select");
+    static By CHECK_OUT_MONTH_YEAR = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(3) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-month-year.js-date-field__part > select > option:nth-child(7)");
+//    static By CHECK_OUT_DAY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(3) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-day.js-date-field__part.sb-date-field__select_disabled > select");
+
+    static By CHECKIN_MONTH = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(1)");
+
+    static By CHECK_IN_DAY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(2) > table > tbody > tr:nth-child(1) > td:nth-child(4)");
+    static By CHECK_OUT_DAY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(2) > table > tbody > tr:nth-child(5) > td:nth-child(6)");
 
     static By ATTRACTIONS_BUTTON = xpath("//*[@id=\"b2indexPage\"]/header/nav[2]/ul/li[4]/a");
     static By SEARCH_BUTTON = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__button > div.sb-searchbox-submit-col.-submit-button > button");
@@ -53,17 +54,22 @@ public class BookingPage {
     @SneakyThrows
     public void setDate() {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(CHECKIN_CALENDAR_BODY)).click();
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(CALENDAR_BODY));
+        selectDate();
+//        webDriverUtils.waitAndClick(CHECK_IN_MONTH_YEAR);
+//        webDriverUtils.waitAndClick(CHECK_IN_DAY);
+//        webDriverUtils.waitAndClick(CHECK_OUT_MONTH_YEAR);
+//        webDriverUtils.waitAndClick(CHECK_OUT_DAY);
 
-        selectDate("December 2022", "1");
-        selectDate("August 2022", "31");
+//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(CALENDAR_BODY));
+
+//        selectDate("December 2022", "1");
+//        selectDate("August 2022", "31");
 
     }
 
     public void selectDate(String month_year, String select_day) throws InterruptedException {
         WebElement button = webDriver.findElement(cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__control.bui-calendar__control--next > svg"));
         WebElement monthYear = webDriver.findElement(xpath("//*[contains(@class, 'bui-calendar__month')]"));
-
         if (!monthYear.getText().equals(month_year)) {
             button.click();
         } else {
@@ -76,6 +82,18 @@ public class BookingPage {
                 }
             }
         }
+    }
+
+    public void selectDate() {
+        WebElement button = webDriver.findElement(cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__control.bui-calendar__control--next"));
+        WebElement monthYear = webDriver.findElement(xpath("//*[contains(@class, 'bui-calendar__month')]"));
+
+        while (!monthYear.getText().equals("December 2022")) {
+            button.click();
+        }
+
+        webDriverUtils.waitAndClick(CHECK_IN_DAY);
+        webDriverUtils.waitAndClick(CHECK_OUT_DAY);
     }
 
     public void clickSearchBtn() {

@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="complete check that city in the first page exactly New York">
-      <change afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/page/AttractionsPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/page/AttractionsResults.java" afterDir="false" />
+    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="fix compilation error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/FoundResultPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/HotelsResultPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +56,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TakeResultsFromPageTests">
+  <component name="RunManager" selected="JUnit.TakeResultsFromPageTests.getCorrectDataAfterSearch">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="AutomationTestTask" />
@@ -107,6 +101,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TakeResultsFromPageTests.getCorrectDataAfterSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AutomationTestTask" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPageTests" />
+      <option name="METHOD_NAME" value="getCorrectDataAfterSearch" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TakeResultsFromPageTests.getCorrectDataAfterSearchInAttraction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AutomationTestTask" />
       <extension name="coverage">
@@ -123,29 +133,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TakeResultsFromPageTests.getListOfAvailableAttractionsInChosenCity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AutomationTestTask" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPageTests" />
-      <option name="METHOD_NAME" value="getListOfAvailableAttractionsInChosenCity" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TakeResultsFromPageTests.getCorrectDataAfterSearch" />
         <item itemvalue="JUnit.TakeResultsFromPageTests" />
         <item itemvalue="JUnit.TakeResultsFromPageTests.getCorrectDataAfterSearchInAttraction" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TakeResultsFromPageTests.getAvailableAttractionsInChosenCity" />
-        <item itemvalue="JUnit.TakeResultsFromPageTests.getListOfAvailableAttractionsInChosenCity" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +155,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658828427249</updated>
-      <workItem from="1658828429495" duration="72556000" />
+      <workItem from="1658828429495" duration="75276000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1658829592921</created>
@@ -191,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658948200521</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix compilation error">
+      <created>1659031668002</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1659031668002</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +219,18 @@
     <MESSAGE value="commit for push" />
     <MESSAGE value="commit for push for checking date input" />
     <MESSAGE value="complete check that city in the first page exactly New York" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete check that city in the first page exactly New York" />
+    <MESSAGE value="fix compilation error" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix compilation error" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
