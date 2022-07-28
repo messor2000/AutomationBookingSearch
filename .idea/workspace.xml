@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="fix compilation error">
+    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="commit for checking methods for putting date">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +154,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658828427249</updated>
-      <workItem from="1658828429495" duration="75276000" />
+      <workItem from="1658828429495" duration="78263000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1658829592921</created>
@@ -192,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659031668002</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="commit for checking methods for putting date">
+      <created>1659036725978</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1659036725978</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,15 +226,16 @@
     <MESSAGE value="commit for push for checking date input" />
     <MESSAGE value="complete check that city in the first page exactly New York" />
     <MESSAGE value="fix compilation error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix compilation error" />
+    <MESSAGE value="commit for checking methods for putting date" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit for checking methods for putting date" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="16" />
+          <line>50</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
