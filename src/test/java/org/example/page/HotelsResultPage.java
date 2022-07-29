@@ -2,6 +2,7 @@ package org.example.page;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
+import org.example.entity.Hotel;
 import org.example.util.WebDriverUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,17 +18,14 @@ import static org.openqa.selenium.By.className;
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 public class HotelsResultPage {
     WebDriver webDriver;
-    WebDriverWait webDriverWait;
-    WebDriverUtils webDriverUtils;
 
     static By HOTEL_NAME = className("fcab3ed991");
     static By ADDRESS =  className("a1fbd102d9");
+    static By HOTEL_BUTTON = className("e13098a59f");
 
-    public HotelsResultPage(WebDriver webDriver, WebDriverWait webDriverWait, WebDriverUtils webDriverUtils) {
+    public HotelsResultPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
         this.webDriver = webDriver;
-        this.webDriverWait = webDriverWait;
-        this.webDriverUtils = webDriverUtils;
     }
 
     public List<Hotel> checkHotelRequirements() {
@@ -41,6 +39,12 @@ public class HotelsResultPage {
             hotel.setName(listOfNames.get(i).getText());
             hotel.setAddress(listOfAddress.get(i).getText());
             hotelList.add(hotel);
+            cards.get(i).findElement(HOTEL_BUTTON).click();
+
+            ArrayList<String> tabs = new ArrayList<>(webDriver.getWindowHandles());
+            webDriver.switchTo().window(tabs.get(1));
+            webDriver.close();
+            webDriver.switchTo().window(tabs.get(0));
         }
 
         return hotelList;

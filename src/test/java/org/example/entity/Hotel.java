@@ -1,4 +1,4 @@
-package org.example.page;
+package org.example.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;

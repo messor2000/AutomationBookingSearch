@@ -6,7 +6,10 @@ import lombok.experimental.FieldDefaults;
 import org.example.util.WebDriverUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
@@ -22,19 +25,7 @@ public class BookingPage {
     WebDriverUtils webDriverUtils;
 
     static By SEARCH_BOX = cssSelector("#ss");
-    static By CALENDAR_BODY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div");
     static By CHECKIN_CALENDAR_BODY = xpath("//div[contains(@class, 'b-datepicker')][@data-mode='checkin']");
-    static By CHECK_IN_MONTH_YEAR = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(2) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-month-year.js-date-field__part > select > option:nth-child(7)");
-    //    static By CHECK_IN_DAY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(2) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-day.js-date-field__part.sb-date-field__select_disabled > select");
-    static By CHECK_OUT_MONTH_YEAR = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(3) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-month-year.js-date-field__part > select > option:nth-child(7)");
-//    static By CHECK_OUT_DAY = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp__dates-inner > div:nth-child(3) > div > div > div > div > div.sb-date-field__controls.sb-date-field__controls__ie-fix > div.sb-date-field__select.-day.js-date-field__part.sb-date-field__select_disabled > select");
-
-    static By CHECKIN_MONTH = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__dates.xp__group > div.xp-calendar > div > div > div.bui-calendar__content > div:nth-child(1)");
-
-    static By CHECK_IN_DAY = xpath("//*[contains(@data-date, '2022-12-01')]");
-    static By CHECK_OUT_DAY = xpath("//*[contains(@data-date, '2022-12-31')]");
-    static By CALENDAR_ROW = xpath("//div[contains(@class, 'bui-calendar__row')]");
-
     static By ATTRACTIONS_BUTTON = xpath("//*[@id=\"b2indexPage\"]/header/nav[2]/ul/li[4]/a");
     static By SEARCH_BUTTON = cssSelector("#frm > div.xp__fieldset.js--sb-fieldset.accommodation > div.xp__button > div.sb-searchbox-submit-col.-submit-button > button");
 
@@ -55,22 +46,48 @@ public class BookingPage {
     @SneakyThrows
     public void setDate() {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(CHECKIN_CALENDAR_BODY)).click();
-        selectDate();
+//        selectDate();
+        enterDate();
     }
 
-    private void selectDate() {
-        WebElement button = webDriver.findElement(xpath("//*[contains(@data-bui-ref, 'calendar-next')]"));
-        List<WebElement> monthYear;
+//    private void selectDate() {
+//        WebElement button = webDriver.findElement(xpath("//*[contains(@data-bui-ref, 'calendar-next')]"));
+//        List<WebElement> monthYear;
+//
+//        for (int i = 0; i < 11; i++) {
+//            monthYear = webDriver.findElements(xpath("//*[contains(@class, 'bui-calendar__month')]"));
+//            if (!monthYear.get(0).getText().equals("December 2022")) {
+//                button.click();
+//            } else {
+//                webDriverUtils.waitAndClick(xpath("//*[contains(@data-date, '2022-12-01')]"));
+//                webDriverUtils.waitAndClick(xpath("//*[contains(@data-date, '2022-12-31')]"));
+//            }
+//        }
+//    }
 
-        for (int i = 0; i < 11; i++) {
-            monthYear = webDriver.findElements(xpath("//*[contains(@class, 'bui-calendar__month')]"));
-            if (!monthYear.get(0).getText().equals("December 2022")) {
-                button.click();
-            } else {
-                webDriverUtils.waitAndClick(xpath("//*[contains(@data-date, '2022-12-01')]"));
-                webDriverUtils.waitAndClick(xpath("//*[contains(@data-date, '2022-12-31')]"));
-            }
-        }
+    private void enterDate() {
+        JavascriptExecutor jse = (JavascriptExecutor) webDriver;
+        jse.executeScript("document.getElementsByName('checkin_year')[0].setAttribute('type', 'text');");
+        webDriver.findElement(By.xpath("//input[@name='checkin_year']")).clear();
+        webDriver.findElement(By.xpath("//input[@name='checkin_year']")).sendKeys("2022");
+
+        jse.executeScript("document.getElementsByName('checkin_month')[0].setAttribute('type', 'text');");
+        webDriver.findElement(By.xpath("//input[@name='checkin_month']")).clear();
+        webDriver.findElement(By.xpath("//input[@name='checkin_month']")).sendKeys("12");
+
+        Select checkInDropdown = new Select(webDriver.findElement(xpath("//select[@name='checkin_monthday']")));
+        checkInDropdown.selectByValue("1");
+
+        jse.executeScript("document.getElementsByName('checkout_year')[0].setAttribute('type', 'text');");
+        webDriver.findElement(By.xpath("//input[@name='checkout_year']")).clear();
+        webDriver.findElement(By.xpath("//input[@name='checkout_year']")).sendKeys("2022");
+
+        jse.executeScript("document.getElementsByName('checkout_month')[0].setAttribute('type', 'text');");
+        webDriver.findElement(By.xpath("//input[@name='checkout_month']")).clear();
+        webDriver.findElement(By.xpath("//input[@name='checkout_month']")).sendKeys("12");
+
+        Select checkOutDropdown = new Select(webDriver.findElement(xpath("//select[@name='checkout_monthday']")));
+        checkOutDropdown.selectByValue("31");
     }
 
     public void clickSearchBtn() {

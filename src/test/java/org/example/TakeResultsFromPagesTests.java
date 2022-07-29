@@ -2,6 +2,7 @@ package org.example;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.example.entity.Hotel;
 import org.example.page.*;
 import org.example.util.ConfProperties;
 import org.example.util.WebDriverUtils;
@@ -19,11 +20,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
-public class TakeResultsFromPageTests {
+public class TakeResultsFromPagesTests {
     private static BookingPage bookingPage;
     private static HotelsResultPage hotelsResultPage;
     private static AttractionsPage attractionsPage;
-    private static AttractionsResults attractionsResult;
+    private static AttractionsResultsPage attractionsResult;
     private static WebDriver driver;
     private static WebDriverWait webDriverWait;
     private static WebDriverUtils webDriverUtils;
@@ -36,9 +37,9 @@ public class TakeResultsFromPageTests {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
         webDriverUtils = new WebDriverUtils(driver, webDriverWait);
         bookingPage = new BookingPage(driver, webDriverWait, webDriverUtils);
-        hotelsResultPage = new HotelsResultPage(driver, webDriverWait, webDriverUtils);
+        hotelsResultPage = new HotelsResultPage(driver);
         attractionsPage = new AttractionsPage(driver, webDriverWait, webDriverUtils);
-        attractionsResult = new AttractionsResults(driver);
+        attractionsResult = new AttractionsResultsPage(driver, webDriverUtils);
         driver.manage().window().maximize();
         driver.get(ConfProperties.getProperty("page"));
     }
@@ -48,13 +49,15 @@ public class TakeResultsFromPageTests {
     public void getCorrectDataAfterSearch() {
         bookingPage.expectElements();
         bookingPage.enterSearch(ConfProperties.getProperty("city"));
-        bookingPage.setDate();
+//        bookingPage.setDate();
         bookingPage.clickSearchBtn();
 
         List<Hotel> hotelList = hotelsResultPage.checkHotelRequirements();
         for (Hotel hotel: hotelList) {
             assertTrue(hotel.getAddress().contains(ConfProperties.getProperty("city")));
         }
+
+        driver.navigate().back();
     }
 
     @Test
@@ -70,6 +73,8 @@ public class TakeResultsFromPageTests {
         for (String city: attractionsResult.getAttractionsCity()) {
             assertTrue(city.contains(ConfProperties.getProperty("city")));
         }
+
+        driver.navigate().back();
     }
 
     @AfterClass

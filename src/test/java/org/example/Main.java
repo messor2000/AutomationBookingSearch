@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Class<?> testClass = TakeResultsFromPageTests.class;
+        Class<?> testClass = TakeResultsFromPagesTests.class;
 
         System.out.println(getMethodsAnnotatedWith(testClass, Test.class));
 

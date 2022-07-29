@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="complete selecting month in the calendar">
+    <list default="true" id="2de10b32-f357-483d-8917-e65aa570c4e8" name="Changes" comment="update clicking on the date button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPagesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/AttractionsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/AttractionsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/AttractionsResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/AttractionsResultsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/BookingPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/entity/Hotel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/page/HotelsResultPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/page/HotelsResultPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +62,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TakeResultsFromPageTests.getCorrectDataAfterSearch">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TakeResultsFromPagesTests">
+    <configuration name="org.example.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="AutomationTestTask" />
       <extension name="coverage">
@@ -69,7 +76,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TakeResultsFromPageTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TakeResultsFromPagesTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AutomationTestTask" />
       <extension name="coverage">
         <pattern>
@@ -78,13 +85,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPageTests" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPagesTests" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TakeResultsFromPageTests.getAvailableAttractionsInChosenCity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TakeResultsFromPagesTests.getAvailableAttractionsInChosenCity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AutomationTestTask" />
       <extension name="coverage">
         <pattern>
@@ -93,14 +100,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPageTests" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPagesTests" />
       <option name="METHOD_NAME" value="getAvailableAttractionsInChosenCity" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TakeResultsFromPageTests.getCorrectDataAfterSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TakeResultsFromPagesTests.getCorrectDataAfterSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AutomationTestTask" />
       <extension name="coverage">
         <pattern>
@@ -109,14 +116,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPageTests" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPagesTests" />
       <option name="METHOD_NAME" value="getCorrectDataAfterSearch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TakeResultsFromPageTests.getCorrectDataAfterSearchInAttraction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TakeResultsFromPagesTests.getCorrectDataAfterSearchInAttraction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AutomationTestTask" />
       <extension name="coverage">
         <pattern>
@@ -125,7 +132,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.example" />
-      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPageTests" />
+      <option name="MAIN_CLASS_NAME" value="org.example.TakeResultsFromPagesTests" />
       <option name="METHOD_NAME" value="getCorrectDataAfterSearchInAttraction" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -134,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TakeResultsFromPageTests.getCorrectDataAfterSearch" />
-        <item itemvalue="JUnit.TakeResultsFromPageTests" />
-        <item itemvalue="JUnit.TakeResultsFromPageTests.getCorrectDataAfterSearchInAttraction" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TakeResultsFromPageTests.getAvailableAttractionsInChosenCity" />
+        <item itemvalue="JUnit.TakeResultsFromPagesTests" />
+        <item itemvalue="JUnit.TakeResultsFromPagesTests.getCorrectDataAfterSearchInAttraction" />
+        <item itemvalue="JUnit.TakeResultsFromPagesTests.getCorrectDataAfterSearch" />
+        <item itemvalue="Application.org.example.Main" />
+        <item itemvalue="JUnit.TakeResultsFromPagesTests.getAvailableAttractionsInChosenCity" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +161,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658828427249</updated>
-      <workItem from="1658828429495" duration="81974000" />
+      <workItem from="1658828429495" duration="92498000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1658829592921</created>
@@ -205,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659041328680</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update clicking on the date button">
+      <created>1659088401700</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1659088401700</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,17 +249,7 @@
     <MESSAGE value="fix compilation error" />
     <MESSAGE value="commit for checking methods for putting date" />
     <MESSAGE value="complete selecting month in the calendar" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete selecting month in the calendar" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/example/TakeResultsFromPageTests.java</url>
-          <line>50</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="update clicking on the date button" />
+    <option name="LAST_COMMIT_MESSAGE" value="update clicking on the date button" />
   </component>
 </project>
